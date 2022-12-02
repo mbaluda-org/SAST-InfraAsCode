@@ -27,6 +27,7 @@ jobs:
           output_path: results-dir
           platform_type: terraform
           output_formats: 'json,sarif'
+          ignore_on_exit: results
       - name: Show results
         run: |
           cat results-dir/results.sarif
