@@ -1,7 +1,9 @@
-name: scan with KICS and upload SARIF
+name: KICS
 
 on:
   workflow_dispatch: #for testing
+  push:
+    branches: [master]
   pull_request:
     branches: [master]
 
@@ -19,14 +21,9 @@ jobs:
         uses: checkmarx/kics-github-action@v1.6
         with:
           path: 'terraform'
-          # when provided with a directory on output_path
-          # it will generate the specified reports file named 'results.{extension}'
-          # in this example it will generate:
-          # - results-dir/results.json
-          # - results-dir/results.sarif
           output_path: results-dir
           platform_type: terraform
-          output_formats: 'json,sarif'
+          output_formats: 'sarif'
           ignore_on_exit: results
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
