@@ -3,9 +3,9 @@ name: KICS
 on:
   workflow_dispatch: #for testing
   push:
-    branches: [master]
+    branches: [ "main" ]
   pull_request:
-    branches: [master]
+    branches: [ "main" ]
 
 jobs:
   kics-job:
